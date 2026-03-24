@@ -1,37 +1,47 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { content } from '../constants/content';
-import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
-import './Transparencia.css';
+import React from "react";
+import { motion } from "framer-motion";
+import { content } from "../constants/content";
+import { useCopyToClipboard } from "../hooks/useCopyToClipboard";
+import "./Transparencia.css";
 
-const TransParencia = () => {
-  const { hero, summary, chart, despesasTitle, despesas, donations, relatorio } = content.transparencia;
+const Transparencia = () => {
+  const {
+    hero,
+    summary,
+    chart,
+    despesasTitle,
+    despesas,
+    donations,
+    relatorio,
+  } = content.transparencia;
   const { copied, copy } = useCopyToClipboard();
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 }
-    }
+      transition: { staggerChildren: 0.15 },
+    },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   // Dados simulados (em produção viriam de uma API)
   const dadosMensais = [
-    { mes: 'Set', entradas: 45000, saidas: 32000 },
-    { mes: 'Out', entradas: 52000, saidas: 35000 },
-    { mes: 'Nov', entradas: 48000, saidas: 38000 },
-    { mes: 'Dez', entradas: 65000, saidas: 42000 },
-    { mes: 'Jan', entradas: 43000, saidas: 31000 },
-    { mes: 'Fev', entradas: 47000, saidas: 34000 }
+    { mes: "Set", entradas: 45000, saidas: 32000 },
+    { mes: "Out", entradas: 52000, saidas: 35000 },
+    { mes: "Nov", entradas: 48000, saidas: 38000 },
+    { mes: "Dez", entradas: 65000, saidas: 42000 },
+    { mes: "Jan", entradas: 43000, saidas: 31000 },
+    { mes: "Fev", entradas: 47000, saidas: 34000 },
   ];
 
-  const maxValor = Math.max(...dadosMensais.map(d => Math.max(d.entradas, d.saidas)));
+  const maxValor = Math.max(
+    ...dadosMensais.map((d) => Math.max(d.entradas, d.saidas)),
+  );
 
   return (
     <motion.div
@@ -85,8 +95,12 @@ const TransParencia = () => {
           <h2 className="section-title">{chart.title}</h2>
           <div className="grafico-container">
             <div className="grafico-legends">
-              <span className="legend-item"><span className="dot entrada"></span> {chart.entradas}</span>
-              <span className="legend-item"><span className="dot saida"></span> {chart.saidas}</span>
+              <span className="legend-item">
+                <span className="dot entrada"></span> {chart.entradas}
+              </span>
+              <span className="legend-item">
+                <span className="dot saida"></span> {chart.saidas}
+              </span>
             </div>
             <div className="grafico-barras">
               {dadosMensais.map((dado, index) => (
@@ -101,13 +115,17 @@ const TransParencia = () => {
                     <motion.div
                       className="barra entrada"
                       initial={{ height: 0 }}
-                      animate={{ height: `${(dado.entradas / maxValor) * 200}px` }}
+                      animate={{
+                        height: `${(dado.entradas / maxValor) * 200}px`,
+                      }}
                       transition={{ delay: index * 0.1 + 0.2, duration: 0.5 }}
                     />
                     <motion.div
                       className="barra saida"
                       initial={{ height: 0 }}
-                      animate={{ height: `${(dado.saidas / maxValor) * 200}px` }}
+                      animate={{
+                        height: `${(dado.saidas / maxValor) * 200}px`,
+                      }}
                       transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
                     />
                   </div>
@@ -125,7 +143,11 @@ const TransParencia = () => {
           <h2 className="section-title">{despesasTitle}</h2>
           <div className="despesas-grid">
             {despesas.map((item, index) => (
-              <motion.div key={index} className="despesa-item" variants={itemVariants}>
+              <motion.div
+                key={index}
+                className="despesa-item"
+                variants={itemVariants}
+              >
                 <div className="despesa-header">
                   <span className="despesa-icon">{item.icon}</span>
                   <span className="despesa-nome">{item.name}</span>
@@ -155,7 +177,8 @@ const TransParencia = () => {
               <span className="doacao-icon">{donations.dizimos.icon}</span>
               <h3>{donations.dizimos.title}</h3>
               <p>
-                {donations.dizimos.quote}<br />
+                {donations.dizimos.quote}
+                <br />
                 <strong>{donations.dizimos.reference}</strong>
               </p>
             </motion.div>
@@ -165,11 +188,11 @@ const TransParencia = () => {
               <h3>{donations.pix.title}</h3>
               <div className="pix-info">
                 <p className="pix-chave">{donations.pix.chave}</p>
-                <button 
-                  className={`copy-btn ${copied ? 'copied' : ''}`}
+                <button
+                  className={`copy-btn ${copied ? "copied" : ""}`}
                   onClick={() => copy(donations.pix.chave)}
                 >
-                  {copied ? '✓ Copiado!' : donations.pix.copyButton}
+                  {copied ? "✓ Copiado!" : donations.pix.copyButton}
                 </button>
               </div>
             </motion.div>
@@ -178,10 +201,18 @@ const TransParencia = () => {
               <span className="doacao-icon">{donations.banco.icon}</span>
               <h3>{donations.banco.title}</h3>
               <div className="banco-info">
-                <p><strong>Banco:</strong> {donations.banco.banco}</p>
-                <p><strong>Agência:</strong> {donations.banco.agencia}</p>
-                <p><strong>Conta:</strong> {donations.banco.conta}</p>
-                <p><strong>CNPJ:</strong> {donations.banco.cnpj}</p>
+                <p>
+                  <strong>Banco:</strong> {donations.banco.banco}
+                </p>
+                <p>
+                  <strong>Agência:</strong> {donations.banco.agencia}
+                </p>
+                <p>
+                  <strong>Conta:</strong> {donations.banco.conta}
+                </p>
+                <p>
+                  <strong>CNPJ:</strong> {donations.banco.cnpj}
+                </p>
               </div>
             </motion.div>
           </div>
