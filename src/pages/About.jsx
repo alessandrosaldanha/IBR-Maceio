@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { content } from '../constants/content';
 import './About.css';
 
 const About = () => {
+  const { hero, history, cincoSolas, confession, beliefs } = content.about;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -16,34 +19,6 @@ const About = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
 
-  const cincoSolas = [
-    {
-      latin: 'Sola Fide',
-      title: 'Fé Somente',
-      description: 'A justificação é pela fé somente, sem as obras da lei.'
-    },
-    {
-      latin: 'Sola Scriptura',
-      title: 'Escritura Somente',
-      description: 'A Bíblia é a única regra de fé e prática.'
-    },
-    {
-      latin: 'Solus Christus',
-      title: 'Cristo Somente',
-      description: 'A salvação é somente através de Jesus Cristo.'
-    },
-    {
-      latin: 'Sola Gratia',
-      title: 'Graça Somente',
-      description: 'A salvação é pela graça de Deus, não por nossos méritos.'
-    },
-    {
-      latin: 'Soli Deo Gloria',
-      title: 'Para a Glória de Deus Somente',
-      description: 'A finalidade última de todas as coisas é a glória de Deus.'
-    }
-  ];
-
   return (
     <motion.div
       className="about"
@@ -53,29 +28,18 @@ const About = () => {
     >
       {/* Hero */}
       <section className="about-hero">
-        <motion.h1 variants={itemVariants}>Sobre Nós</motion.h1>
-        <motion.p variants={itemVariants}>
-          Conhecendo a Igreja Batista Reformada
-        </motion.p>
+        <motion.h1 variants={itemVariants}>{hero.title}</motion.h1>
+        <motion.p variants={itemVariants}>{hero.subtitle}</motion.p>
       </section>
 
       {/* Historia */}
       <section className="history-section">
         <motion.div className="section-content" variants={itemVariants}>
-          <h2 className="section-title">Nossa História</h2>
+          <h2 className="section-title">{history.title}</h2>
           <div className="history-content">
-            <p>
-              A Igreja Batista Reformada nasceu do movimento reformado que teve início
-              no século XVI com figuras como Martinho Lutero, João Calvino e Ulrich Zwingli.
-              Os batistas reformados preservam as doutrinas da Reforma Protestante,
-              combinando-as com a prática do batismo por imersão de crentes professos.
-            </p>
-            <p>
-              Nossa igreja é parte da tradição batista reformada que valoriza a soberania
-              de Deus, a autoridade das Escrituras e a glória de Deus em todas as coisas.
-              Cremos que a teologia reformada é simplesmente o ensino bíblico aplicado
-              de forma sistemática e consistente.
-            </p>
+            {history.paragraphs.map((text, index) => (
+              <p key={index}>{text}</p>
+            ))}
           </div>
         </motion.div>
       </section>
@@ -83,13 +47,10 @@ const About = () => {
       {/* Cinco Solas */}
       <section className="solas-section">
         <motion.div className="section-content" variants={itemVariants}>
-          <h2 className="section-title">As Cinco Solas</h2>
-          <p className="solas-intro">
-            As cinco solas são cinco frases latinas que resumem os pilares da Reforma Protestante
-            e continuam sendo fundamentais para nossa fé e prática.
-          </p>
+          <h2 className="section-title">{cincoSolas.title}</h2>
+          <p className="solas-intro">{cincoSolas.intro}</p>
           <div className="solas-grid">
-            {cincoSolas.map((sola, index) => (
+            {cincoSolas.solas.map((sola, index) => (
               <motion.div
                 key={sola.latin}
                 className="sola-card"
@@ -109,25 +70,15 @@ const About = () => {
       {/* Confessionalidade */}
       <section className="confession-section">
         <motion.div className="section-content" variants={itemVariants}>
-          <h2 className="section-title">Confessionalidade</h2>
+          <h2 className="section-title">{confession.title}</h2>
           <div className="confession-content">
-            <div className="confession-icon">📜</div>
+            <div className="confession-icon">{confession.icon}</div>
             <div className="confession-text">
-              <h3>Confissão de Fé de Londres de 1689</h3>
-              <p>
-                A Igreja Batista Reformada subscreve e se identifica com a Confissão de Fé
-                de Londres de 1689, um documento histórico que articula a teologia reformada
-                em linguagem clara e bíblica.
-              </p>
-              <p>
-                Esta confissão aborda doutrinas fundamentais como a Trindade, a soberania
-                de Deus na salvação, a depravação total do homem, a expiação limitada,
-                a graça irresistível, a perseverança dos santos e a ordenança do batismo
-                e ceia do Senhor.
-              </p>
-              <blockquote className="confession-quote">
-                "Aglória seja dada a Deus. Todas as coisas são dele, e por ele, e para ele."
-              </blockquote>
+              <h3>{confession.subtitle}</h3>
+              {confession.paragraphs.map((text, index) => (
+                <p key={index}>{text}</p>
+              ))}
+              <blockquote className="confession-quote">{confession.quote}</blockquote>
             </div>
           </div>
         </motion.div>
@@ -136,28 +87,15 @@ const About = () => {
       {/* Crencas */}
       <section className="beliefs-section">
         <motion.div className="section-content" variants={itemVariants}>
-          <h2 className="section-title">Nossas Crenças</h2>
+          <h2 className="section-title">{beliefs.title}</h2>
           <div className="beliefs-grid">
-            <motion.div className="belief-item" variants={itemVariants}>
-              <span className="belief-icon">✝️</span>
-              <h3>A Trindade</h3>
-              <p>Um só Deus em três pessoas: Pai, Filho e Espírito Santo</p>
-            </motion.div>
-            <motion.div className="belief-item" variants={itemVariants}>
-              <span className="belief-icon">📖</span>
-              <h3>A Bíblia</h3>
-              <p>A Palavra de Deus, inspirada, infalível e suficiente</p>
-            </motion.div>
-            <motion.div className="belief-item" variants={itemVariants}>
-              <span className="belief-icon">👼</span>
-              <h3>A Salvação</h3>
-              <p>Pela graça, pela fé, em Cristo sozinho</p>
-            </motion.div>
-            <motion.div className="belief-item" variants={itemVariants}>
-              <span className="belief-icon">✝️</span>
-              <h3>O Batismo</h3>
-              <p>Por imersão, após profissão de fé</p>
-            </motion.div>
+            {beliefs.items.map((item, index) => (
+              <motion.div key={index} className="belief-item" variants={itemVariants}>
+                <span className="belief-icon">{item.icon}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </section>

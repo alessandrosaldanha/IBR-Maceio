@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ModalOracao.css';
 
-const ModalOracao = ({ isOpen, onClose }) => {
+const ModalOracao = ({ isOpen, onClose, content }) => {
   const [formData, setFormData] = useState({
     nome: '',
     oracao: '',
@@ -46,27 +46,27 @@ const ModalOracao = ({ isOpen, onClose }) => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
               >
-                <span className="success-icon">🙏</span>
-                <h3>Seu pedido foi enviado!</h3>
-                <p>Deus ouça nossas orações. Amém.</p>
+                <span className="success-icon">{content.success.icon}</span>
+                <h3>{content.success.title}</h3>
+                <p>{content.success.message}</p>
               </motion.div>
             ) : (
               <>
                 <div className="modal-header">
-                  <span className="modal-icon">✝️</span>
-                  <h2>Pedido de Oração</h2>
-                  <p>Deixe seu pedido nos braços de Deus</p>
+                  <span className="modal-icon">{content.icon}</span>
+                  <h2>{content.title}</h2>
+                  <p>{content.subtitle}</p>
                 </div>
 
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label htmlFor="nome">Seu nome (opcional)</label>
+                    <label htmlFor="nome">{content.nameLabel}</label>
                     <input
                       type="text"
                       id="nome"
                       value={formData.nome}
                       onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                      placeholder="Digite seu nome"
+                      placeholder={content.namePlaceholder}
                       disabled={formData.anonimo}
                     />
                   </div>
@@ -79,24 +79,24 @@ const ModalOracao = ({ isOpen, onClose }) => {
                         onChange={(e) => setFormData({ ...formData, anonimo: e.target.checked })}
                       />
                       <span className="checkbox-custom"></span>
-                      Desejo permanecer anônimo
+                      {content.anonymousLabel}
                     </label>
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="oracao">Seu pedido de oração *</label>
+                    <label htmlFor="oracao">{content.oracaoLabel}</label>
                     <textarea
                       id="oracao"
                       value={formData.oracao}
                       onChange={(e) => setFormData({ ...formData, oracao: e.target.value })}
-                      placeholder="Escreva seu pedido de oração..."
+                      placeholder={content.oracaoPlaceholder}
                       rows={5}
                       required
                     />
                   </div>
 
                   <button type="submit" className="submit-btn">
-                    Enviar Pedido
+                    {content.submitButton}
                   </button>
                 </form>
               </>

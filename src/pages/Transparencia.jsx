@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { content } from '../constants/content';
 import './Transparencia.css';
 
 const Transparencia = () => {
+  const { hero, summary, chart, despesasTitle, despesas, donations, relatorio } = content.transparencia;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -16,7 +19,7 @@ const Transparencia = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
 
-  // Dados simulados
+  // Dados simulados (em produção viriam de uma API)
   const dadosMensais = [
     { mes: 'Set', entradas: 45000, saidas: 32000 },
     { mes: 'Out', entradas: 52000, saidas: 35000 },
@@ -37,39 +40,37 @@ const Transparencia = () => {
     >
       {/* Hero */}
       <section className="transparencia-hero">
-        <motion.h1 variants={itemVariants}>Transparência Financeira</motion.h1>
-        <motion.p variants={itemVariants}>
-          Compromisso com a transparência e o bom uso dos recursos
-        </motion.p>
+        <motion.h1 variants={itemVariants}>{hero.title}</motion.h1>
+        <motion.p variants={itemVariants}>{hero.subtitle}</motion.p>
       </section>
 
       {/* Resumo */}
       <section className="resumo-section">
         <motion.div className="section-content" variants={itemVariants}>
-          <h2 className="section-title">Resumo Financeiro</h2>
+          <h2 className="section-title">{summary.title}</h2>
           <div className="resumo-grid">
             <motion.div className="resumo-card entrada" variants={itemVariants}>
               <span className="resumo-icon">📈</span>
               <div className="resumo-info">
-                <span className="resumo-label">Total de Entradas</span>
-                <span className="resumo-value">R$ 300.000,00</span>
-                <span className="resumo-period">Últimos 6 meses</span>
+                <span className="resumo-label">{summary.entradas.label}</span>
+                <span className="resumo-value">{summary.entradas.value}</span>
+                <span className="resumo-period">{summary.entradas.period}</span>
               </div>
             </motion.div>
             <motion.div className="resumo-card saida" variants={itemVariants}>
               <span className="resumo-icon">📉</span>
               <div className="resumo-info">
-                <span className="resumo-label">Total de Saídas</span>
-                <span className="resumo-value">R$ 212.000,00</span>
-                <span className="resumo-period">Últimos 6 meses</span>
+                <span className="resumo-label">{summary.saidas.label}</span>
+                <span className="resumo-value">{summary.saidas.value}</span>
+                <span className="resumo-period">{summary.saidas.period}</span>
               </div>
             </motion.div>
             <motion.div className="resumo-card saldo" variants={itemVariants}>
               <span className="resumo-icon">💰</span>
               <div className="resumo-info">
-                <span className="resumo-label">Saldo Atual</span>
-                <span className="resumo-value">R$ 88.000,00</span>
-                <span className="resumo-period">Disponível em caixa</span>
+                <span className="resumo-label">{summary.saldo.label}</span>
+                <span className="resumo-value">{summary.saldo.value}</span>
+                <span className="resumo-period">{summary.saldo.period}</span>
               </div>
             </motion.div>
           </div>
@@ -79,11 +80,11 @@ const Transparencia = () => {
       {/* Gráfico */}
       <section className="grafico-section">
         <motion.div className="section-content" variants={itemVariants}>
-          <h2 className="section-title">Entradas vs Saídas</h2>
+          <h2 className="section-title">{chart.title}</h2>
           <div className="grafico-container">
             <div className="grafico-legends">
-              <span className="legend-item"><span className="dot entrada"></span> Entradas</span>
-              <span className="legend-item"><span className="dot saida"></span> Saídas</span>
+              <span className="legend-item"><span className="dot entrada"></span> {chart.entradas}</span>
+              <span className="legend-item"><span className="dot saida"></span> {chart.saidas}</span>
             </div>
             <div className="grafico-barras">
               {dadosMensais.map((dado, index) => (
@@ -119,72 +120,26 @@ const Transparencia = () => {
       {/* Detalhamento */}
       <section className="detalhamento-section">
         <motion.div className="section-content" variants={itemVariants}>
-          <h2 className="section-title">Detalhamento de Despesas</h2>
+          <h2 className="section-title">{despesasTitle}</h2>
           <div className="despesas-grid">
-            <motion.div className="despesa-item" variants={itemVariants}>
-              <div className="despesa-header">
-                <span className="despesa-icon">🏛️</span>
-                <span className="despesa-nome">Templo e Manutenção</span>
-              </div>
-              <div className="despesa-bar-container">
-                <motion.div
-                  className="despesa-bar"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '40%' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                />
-              </div>
-              <span className="despesa-valor">R$ 84.800,00</span>
-            </motion.div>
-            <motion.div className="despesa-item" variants={itemVariants}>
-              <div className="despesa-header">
-                <span className="despesa-icon">🎓</span>
-                <span className="despesa-nome">Ministerio e EBD</span>
-              </div>
-              <div className="despesa-bar-container">
-                <motion.div
-                  className="despesa-bar"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '25%' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                />
-              </div>
-              <span className="despesa-valor">R$ 53.000,00</span>
-            </motion.div>
-            <motion.div className="despesa-item" variants={itemVariants}>
-              <div className="despesa-header">
-                <span className="despesa-icon">🌍</span>
-                <span className="despesa-nome">Missões e Oferta</span>
-              </div>
-              <div className="despesa-bar-container">
-                <motion.div
-                  className="despesa-bar"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '20%' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                />
-              </div>
-              <span className="despesa-valor">R$ 42.400,00</span>
-            </motion.div>
-            <motion.div className="despesa-item" variants={itemVariants}>
-              <div className="despesa-header">
-                <span className="despesa-icon">💡</span>
-                <span className="despesa-nome">Utilidades e Admin</span>
-              </div>
-              <div className="despesa-bar-container">
-                <motion.div
-                  className="despesa-bar"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '15%' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                />
-              </div>
-              <span className="despesa-valor">R$ 31.800,00</span>
-            </motion.div>
+            {despesas.map((item, index) => (
+              <motion.div key={index} className="despesa-item" variants={itemVariants}>
+                <div className="despesa-header">
+                  <span className="despesa-icon">{item.icon}</span>
+                  <span className="despesa-nome">{item.name}</span>
+                </div>
+                <div className="despesa-bar-container">
+                  <motion.div
+                    className="despesa-bar"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${item.percent}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                  />
+                </div>
+                <span className="despesa-valor">{item.value}</span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </section>
@@ -192,37 +147,34 @@ const Transparencia = () => {
       {/* Doacoes */}
       <section className="doacoes-section">
         <motion.div className="section-content" variants={itemVariants}>
-          <h2 className="section-title">Como Contribuir</h2>
+          <h2 className="section-title">{donations.title}</h2>
           <div className="doacoes-grid">
             <motion.div className="doacao-card" variants={itemVariants}>
-              <span className="doacao-icon">💳</span>
-              <h3>Dízimos e Ofertas</h3>
+              <span className="doacao-icon">{donations.dizimos.icon}</span>
+              <h3>{donations.dizimos.title}</h3>
               <p>
-                "Trazei todos os dízimos à casa do depósito, para que haja mantimento
-                na minha casa, e provai-me nisto, diz o Senhor dos Exércitos, se eu
-                não vos abrir as janelas do céu e não derramar sobre vós bênção sem
-                medida."<br />
-                <strong>Malaquias 3:10</strong>
+                {donations.dizimos.quote}<br />
+                <strong>{donations.dizimos.reference}</strong>
               </p>
             </motion.div>
 
             <motion.div className="doacao-card pix" variants={itemVariants}>
-              <span className="doacao-icon">📱</span>
-              <h3>Chave Pix</h3>
+              <span className="doacao-icon">{donations.pix.icon}</span>
+              <h3>{donations.pix.title}</h3>
               <div className="pix-info">
-                <p className="pix-chave">ibr@igreja.com.br</p>
-                <button className="copy-btn">Copiar Chave</button>
+                <p className="pix-chave">{donations.pix.chave}</p>
+                <button className="copy-btn">{donations.pix.copyButton}</button>
               </div>
             </motion.div>
 
             <motion.div className="doacao-card" variants={itemVariants}>
-              <span className="doacao-icon">🏦</span>
-              <h3>Transferência Bancária</h3>
+              <span className="doacao-icon">{donations.banco.icon}</span>
+              <h3>{donations.banco.title}</h3>
               <div className="banco-info">
-                <p><strong>Banco:</strong> 000 - Banco Exemplo</p>
-                <p><strong>Agência:</strong> 1234-5</p>
-                <p><strong>Conta:</strong> 67890-1</p>
-                <p><strong>CNPJ:</strong> 00.000.000/0001-00</p>
+                <p><strong>Banco:</strong> {donations.banco.banco}</p>
+                <p><strong>Agência:</strong> {donations.banco.agencia}</p>
+                <p><strong>Conta:</strong> {donations.banco.conta}</p>
+                <p><strong>CNPJ:</strong> {donations.banco.cnpj}</p>
               </div>
             </motion.div>
           </div>
@@ -233,14 +185,10 @@ const Transparencia = () => {
       <section className="relatorio-section">
         <motion.div className="section-content" variants={itemVariants}>
           <div className="relatorio-card">
-            <span className="relatorio-icon">📊</span>
+            <span className="relatorio-icon">{relatorio.icon}</span>
             <div className="relatorio-text">
-              <h3>Prestação de Contas</h3>
-              <p>
-                A prestação de contas completa está disponível para todos os membros
-                da igreja. Solicite junto à tesouraria ou aguarde a divulgação no
-                final de cada trimestre.
-              </p>
+              <h3>{relatorio.title}</h3>
+              <p>{relatorio.description}</p>
             </div>
           </div>
         </motion.div>

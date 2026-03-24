@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { content } from '../constants/content';
 import './Home.css';
 
 const Home = ({ onPrayerClick }) => {
+  const { hero, times, welcome } = content.home;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,23 +30,21 @@ const Home = ({ onPrayerClick }) => {
       <section className="hero">
         <div className="hero-bg"></div>
         <motion.div className="hero-content" variants={itemVariants}>
-          <span className="hero-motto">Soli Deo Gloria</span>
-          <h1 className="hero-title">Igreja Batista Reformada</h1>
-          <p className="hero-verse">
-            "Porque dele, e por ele, e para ele são todas as coisas; glória, pois, a ele eternamente."
-          </p>
-          <p className="hero-reference">Romanos 11:36</p>
+          <span className="hero-motto">{hero.motto}</span>
+          <h1 className="hero-title">{hero.title}</h1>
+          <p className="hero-verse">{hero.verse}</p>
+          <p className="hero-reference">{hero.reference}</p>
           <div className="hero-buttons">
             <button className="hero-btn primary">
-              ▶️ Assista ao Vivo
+              {hero.primaryButton}
             </button>
             <button className="hero-btn secondary" onClick={onPrayerClick}>
-              🙏 Pedido de Oração
+              {hero.secondaryButton}
             </button>
           </div>
         </motion.div>
         <div className="hero-scroll">
-          <span> role para baixo</span>
+          <span>{hero.scrollText}</span>
           <motion.div
             className="scroll-arrow"
             animate={{ y: [0, 10, 0] }}
@@ -57,32 +58,21 @@ const Home = ({ onPrayerClick }) => {
       {/* Culto Times */}
       <section className="times-section">
         <motion.div className="section-content" variants={itemVariants}>
-          <h2 className="section-title">Horários dos Cultos</h2>
+          <h2 className="section-title">{times.title}</h2>
           <div className="times-grid">
-            <motion.div className="time-card" variants={itemVariants} whileHover={{ scale: 1.05 }}>
-              <span className="time-icon">📖</span>
-              <h3>Escola Bíblica Dominical</h3>
-              <p className="time-day">Sábado</p>
-              <p className="time-hour">18h00</p>
-            </motion.div>
-            <motion.div className="time-card" variants={itemVariants} whileHover={{ scale: 1.05 }}>
-              <span className="time-icon">🕊️</span>
-              <h3>Culto de Adoração</h3>
-              <p className="time-day">Domingo</p>
-              <p className="time-hour">9h00</p>
-            </motion.div>
-            <motion.div className="time-card featured" variants={itemVariants} whileHover={{ scale: 1.05 }}>
-              <span className="time-icon">✨</span>
-              <h3>Culto de Celebração</h3>
-              <p className="time-day">Domingo</p>
-              <p className="time-hour">18h00</p>
-            </motion.div>
-            <motion.div className="time-card" variants={itemVariants} whileHover={{ scale: 1.05 }}>
-              <span className="time-icon">📿</span>
-              <h3>Culto de Oração</h3>
-              <p className="time-day">Quarta-feira</p>
-              <p className="time-hour">19h30</p>
-            </motion.div>
+            {times.cards.map((card, index) => (
+              <motion.div 
+                key={index} 
+                className={`time-card ${card.featured ? 'featured' : ''}`} 
+                variants={itemVariants} 
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="time-icon">{card.icon}</span>
+                <h3>{card.title}</h3>
+                <p className="time-day">{card.day}</p>
+                <p className="time-hour">{card.hour}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </section>
@@ -90,19 +80,14 @@ const Home = ({ onPrayerClick }) => {
       {/* Welcome Section */}
       <section className="welcome-section">
         <motion.div className="section-content" variants={itemVariants}>
-          <h2 className="section-title">Seja Bem-Vindo</h2>
+          <h2 className="section-title">{welcome.title}</h2>
           <div className="welcome-content">
             <div className="welcome-text">
-              <p>
-                Somos uma igreja que glorifica a Deus através da pregação fiel da Sua Palavra,
-                da adoração sincera e do amor genuíno ao próximo.
-              </p>
-              <p>
-                Cremos na soberania de Deus em todas as coisas e na autoridade das Escrituras
-                como nossa única regra de fé e prática.
-              </p>
+              {welcome.paragraphs.map((text, index) => (
+                <p key={index}>{text}</p>
+              ))}
               <div className="welcome-cta">
-                <a href="/sobre" className="learn-more">Conheça nossa história →</a>
+                <a href="/sobre" className="learn-more">{welcome.link}</a>
               </div>
             </div>
             <motion.div

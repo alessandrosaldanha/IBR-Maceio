@@ -3,30 +3,23 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
-const Navbar = ({ onPrayerClick, theme, onThemeToggle }) => {
+const Navbar = ({ onPrayerClick, theme, onThemeToggle, content }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  const navLinks = [
-    { path: '/', label: 'Início' },
-    { path: '/sobre', label: 'Sobre Nós' },
-    { path: '/ministerios', label: 'Ministérios' },
-    { path: '/escala', label: 'Escala' },
-    { path: '/transparencia', label: 'Transparência' },
-  ];
-
   const isActive = (path) => location.pathname === path;
+  const isDark = theme === 'dark';
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <span className="logo-icon">✝️</span>
-          <span className="logo-text">IBR</span>
+          <span className="logo-icon">{content.logoIcon}</span>
+          <span className="logo-text">{content.logo}</span>
         </Link>
 
         <div className="navbar-links-desktop">
-          {navLinks.map((link) => (
+          {content.links.map((link) => (
             <Link
               key={link.path}
               to={link.path}
@@ -43,14 +36,14 @@ const Navbar = ({ onPrayerClick, theme, onThemeToggle }) => {
             </Link>
           ))}
           <button className="prayer-btn" onClick={onPrayerClick}>
-            Pedido de Oração
+            {content.prayerButton}
           </button>
           <button 
             className="theme-toggle" 
             onClick={onThemeToggle}
-            aria-label={`Mudar para tema ${theme === 'dark' ? 'claro' : 'escuro'}`}
+            aria-label={content.themeToggleLabel[theme]}
           >
-            {theme === 'dark' ? '☀️' : '🌙'}
+            {content.themeToggle[theme]}
           </button>
         </div>
 
@@ -74,7 +67,7 @@ const Navbar = ({ onPrayerClick, theme, onThemeToggle }) => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {navLinks.map((link) => (
+            {content.links.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
@@ -88,7 +81,7 @@ const Navbar = ({ onPrayerClick, theme, onThemeToggle }) => {
               setIsOpen(false);
               onPrayerClick();
             }}>
-              Pedido de Oração
+              {content.prayerButton}
             </button>
             <button 
               className="mobile-theme-toggle"
@@ -97,7 +90,7 @@ const Navbar = ({ onPrayerClick, theme, onThemeToggle }) => {
                 onThemeToggle();
               }}
             >
-              {theme === 'dark' ? '☀️' : '🌙'} Mudar para tema {theme === 'dark' ? 'claro' : 'escuro'}
+              {content.themeToggle[theme]} {content.themeToggleLabel[theme]}
             </button>
           </motion.div>
         )}

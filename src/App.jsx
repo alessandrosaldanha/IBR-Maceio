@@ -10,6 +10,7 @@ import Ministerios from './pages/Ministerios';
 import Escala from './pages/Escala';
 import Transparencia from './pages/Transparencia';
 import { useTheme } from './hooks/useTheme';
+import { content } from './constants/content';
 import './styles/globals.css';
 
 const PageWrapper = ({ children }) => {
@@ -22,7 +23,7 @@ const PageWrapper = ({ children }) => {
 
 const App = () => {
   const [isPrayerModalOpen, setIsPrayerModalOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, themeColors } = useTheme();
 
   return (
     <Router>
@@ -31,6 +32,7 @@ const App = () => {
           onPrayerClick={() => setIsPrayerModalOpen(true)} 
           theme={theme}
           onThemeToggle={toggleTheme}
+          content={content.navbar}
         />
         
         <main style={{ flex: 1, paddingTop: '80px' }}>
@@ -80,11 +82,12 @@ const App = () => {
           </AnimatePresence>
         </main>
 
-        <Footer />
+        <Footer content={content.footer} />
         
         <ModalOracao
           isOpen={isPrayerModalOpen}
           onClose={() => setIsPrayerModalOpen(false)}
+          content={content.modalOracao}
         />
       </div>
     </Router>
