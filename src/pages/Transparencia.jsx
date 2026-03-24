@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { content } from '../constants/content';
+import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
 import './Transparencia.css';
 
-const Transparencia = () => {
+const TransParencia = () => {
   const { hero, summary, chart, despesasTitle, despesas, donations, relatorio } = content.transparencia;
+  const { copied, copy } = useCopyToClipboard();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -163,7 +165,12 @@ const Transparencia = () => {
               <h3>{donations.pix.title}</h3>
               <div className="pix-info">
                 <p className="pix-chave">{donations.pix.chave}</p>
-                <button className="copy-btn">{donations.pix.copyButton}</button>
+                <button 
+                  className={`copy-btn ${copied ? 'copied' : ''}`}
+                  onClick={() => copy(donations.pix.chave)}
+                >
+                  {copied ? '✓ Copiado!' : donations.pix.copyButton}
+                </button>
               </div>
             </motion.div>
 

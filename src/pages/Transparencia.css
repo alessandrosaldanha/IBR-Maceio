@@ -339,6 +339,10 @@
   background: var(--accent-hover);
 }
 
+.copy-btn.copied {
+  background: var(--success);
+}
+
 .banco-info {
   text-align: left;
   background: var(--bg-card);
