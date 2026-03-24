@@ -5,21 +5,22 @@
 
 /* Hero */
 .transparencia-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1a2335 100%);
+  background: var(--gradient-hero);
   padding: 5rem 2rem;
   text-align: center;
+  transition: background 0.3s ease;
 }
 
 .transparencia-hero h1 {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
-  color: #fff;
+  color: var(--text-primary);
   font-family: 'Georgia', serif;
   margin-bottom: 1rem;
 }
 
 .transparencia-hero p {
   font-size: 1.2rem;
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 .section-content {
@@ -31,7 +32,7 @@
 .section-title {
   text-align: center;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 3rem;
   font-family: 'Georgia', serif;
 }
@@ -41,14 +42,15 @@
   display: block;
   width: 60px;
   height: 3px;
-  background: #4a6fa5;
+  background: var(--accent-primary);
   margin: 1rem auto 0;
 }
 
 /* Resumo Section */
 .resumo-section {
-  background: #1a2335;
+  background: var(--bg-secondary);
   padding: 5rem 2rem;
+  transition: background-color 0.3s ease;
 }
 
 .resumo-grid {
@@ -58,19 +60,19 @@
 }
 
 .resumo-card {
-  background: #0f172a;
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 2rem;
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
   transition: all 0.3s ease;
 }
 
 .resumo-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
 .resumo-icon {
@@ -83,39 +85,40 @@
 }
 
 .resumo-label {
-  color: #64748b;
+  color: var(--text-muted);
   font-size: 0.9rem;
   margin-bottom: 0.3rem;
 }
 
 .resumo-value {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.8rem;
   font-weight: 700;
 }
 
 .resumo-card.entrada .resumo-value {
-  color: #22c55e;
+  color: var(--success);
 }
 
 .resumo-card.saida .resumo-value {
-  color: #ef4444;
+  color: var(--danger);
 }
 
 .resumo-card.saldo .resumo-value {
-  color: #4a6fa5;
+  color: var(--accent-primary);
 }
 
 .resumo-period {
-  color: #64748b;
+  color: var(--text-muted);
   font-size: 0.85rem;
   margin-top: 0.3rem;
 }
 
 /* Grafico Section */
 .grafico-section {
-  background: #0f172a;
+  background: var(--bg-primary);
   padding: 5rem 2rem;
+  transition: background-color 0.3s ease;
 }
 
 .grafico-container {
@@ -134,7 +137,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #a0aec0;
+  color: var(--text-secondary);
 }
 
 .dot {
@@ -144,11 +147,11 @@
 }
 
 .dot.entrada {
-  background: #4a6fa5;
+  background: var(--accent-primary);
 }
 
 .dot.saida {
-  background: #ef4444;
+  background: var(--danger);
 }
 
 .grafico-barras {
@@ -157,7 +160,7 @@
   align-items: flex-end;
   height: 250px;
   padding: 0 1rem;
-  border-bottom: 2px solid #334155;
+  border-bottom: 2px solid var(--border-color);
 }
 
 .barra-group {
@@ -182,23 +185,24 @@
 }
 
 .barra.entrada {
-  background: linear-gradient(180deg, #4a6fa5 0%, #1e3a5f 100%);
+  background: var(--gradient-card);
 }
 
 .barra.saida {
-  background: linear-gradient(180deg, #ef4444 0%, #991b1b 100%);
+  background: linear-gradient(180deg, var(--danger) 0%, #991b1b 100%);
 }
 
 .barra-label {
-  color: #64748b;
+  color: var(--text-muted);
   font-size: 0.9rem;
   font-weight: 500;
 }
 
 /* Detalhamento Section */
 .detalhamento-section {
-  background: #1a2335;
+  background: var(--bg-secondary);
   padding: 5rem 2rem;
+  transition: background-color 0.3s ease;
 }
 
 .despesas-grid {
@@ -210,10 +214,15 @@
 }
 
 .despesa-item {
-  background: #0f172a;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.despesa-item:hover {
+  border-color: var(--border-hover);
 }
 
 .despesa-header {
@@ -228,14 +237,14 @@
 }
 
 .despesa-nome {
-  color: #fff;
+  color: var(--text-primary);
   font-weight: 600;
   font-size: 1.1rem;
 }
 
 .despesa-bar-container {
   height: 8px;
-  background: #334155;
+  background: var(--border-color);
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: 0.8rem;
@@ -243,19 +252,20 @@
 
 .despesa-bar {
   height: 100%;
-  background: linear-gradient(90deg, #4a6fa5 0%, #1e3a5f 100%);
+  background: var(--gradient-card);
   border-radius: 4px;
 }
 
 .despesa-valor {
-  color: #a0aec0;
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
 /* Doacoes Section */
 .doacoes-section {
-  background: #0f172a;
+  background: var(--bg-primary);
   padding: 5rem 2rem;
+  transition: background-color 0.3s ease;
 }
 
 .doacoes-grid {
@@ -265,16 +275,17 @@
 }
 
 .doacao-card {
-  background: #1a2335;
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 2rem;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
 
 .doacao-card.pix {
-  border-color: rgba(74, 111, 165, 0.5);
-  background: linear-gradient(135deg, rgba(74, 111, 165, 0.1) 0%, #1a2335 100%);
+  border-color: var(--border-hover);
+  background: var(--accent-subtle);
 }
 
 .doacao-icon {
@@ -284,14 +295,14 @@
 }
 
 .doacao-card h3 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.3rem;
   margin-bottom: 1rem;
   font-family: 'Georgia', serif;
 }
 
 .doacao-card p {
-  color: #a0aec0;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.7;
   font-style: italic;
@@ -302,19 +313,20 @@
 }
 
 .pix-chave {
-  background: #0f172a;
+  background: var(--bg-card);
   padding: 1rem;
   border-radius: 8px;
-  color: #4a6fa5;
+  color: var(--accent-primary);
   font-size: 1.2rem;
   font-weight: 600;
   font-family: monospace;
   margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
 }
 
 .copy-btn {
-  background: #4a6fa5;
-  color: #fff;
+  background: var(--accent-primary);
+  color: var(--text-primary);
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 6px;
@@ -324,19 +336,20 @@
 }
 
 .copy-btn:hover {
-  background: #5a7fb5;
+  background: var(--accent-hover);
 }
 
 .banco-info {
   text-align: left;
-  background: #0f172a;
+  background: var(--bg-card);
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
+  border: 1px solid var(--border-color);
 }
 
 .banco-info p {
-  color: #a0aec0;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   margin: 0.5rem 0;
   font-style: normal;
@@ -344,18 +357,19 @@
 
 /* Relatorio Section */
 .relatorio-section {
-  background: #1a2335;
+  background: var(--bg-secondary);
   padding: 5rem 2rem;
+  transition: background-color 0.3s ease;
 }
 
 .relatorio-card {
   display: flex;
   align-items: center;
   gap: 2rem;
-  background: rgba(74, 111, 165, 0.1);
+  background: var(--accent-subtle);
   border-radius: 16px;
   padding: 2rem;
-  border: 1px solid rgba(74, 111, 165, 0.2);
+  border: 1px solid var(--accent-subtle);
   max-width: 800px;
   margin: 0 auto;
 }
@@ -366,12 +380,12 @@
 }
 
 .relatorio-text h3 {
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .relatorio-text p {
-  color: #a0aec0;
+  color: var(--text-secondary);
   line-height: 1.7;
 }
 

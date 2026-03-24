@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
-const Navbar = ({ onPrayerClick }) => {
+const Navbar = ({ onPrayerClick, theme, onThemeToggle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -45,6 +45,13 @@ const Navbar = ({ onPrayerClick }) => {
           <button className="prayer-btn" onClick={onPrayerClick}>
             Pedido de Oração
           </button>
+          <button 
+            className="theme-toggle" 
+            onClick={onThemeToggle}
+            aria-label={`Mudar para tema ${theme === 'dark' ? 'claro' : 'escuro'}`}
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
         </div>
 
         <button
@@ -82,6 +89,15 @@ const Navbar = ({ onPrayerClick }) => {
               onPrayerClick();
             }}>
               Pedido de Oração
+            </button>
+            <button 
+              className="mobile-theme-toggle"
+              onClick={() => {
+                setIsOpen(false);
+                onThemeToggle();
+              }}
+            >
+              {theme === 'dark' ? '☀️' : '🌙'} Mudar para tema {theme === 'dark' ? 'claro' : 'escuro'}
             </button>
           </motion.div>
         )}

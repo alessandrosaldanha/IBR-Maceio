@@ -1,4 +1,86 @@
-/* Reset e Base */
+/* ============================================
+   CSS Variables - Temas Dark e Light
+   ============================================ */
+
+/* Tema Escuro (padrão) */
+:root,
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1a2335;
+  --bg-card: #1a2335;
+  --bg-card-hover: #243044;
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+  
+  /* Textos */
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+  --text-muted: #64748b;
+  
+  /* Acentos */
+  --accent-primary: #4a6fa5;
+  --accent-hover: #5a7fb5;
+  --accent-subtle: rgba(74, 111, 165, 0.2);
+  
+  /* Bordas */
+  --border-color: rgba(255, 255, 255, 0.05);
+  --border-hover: rgba(74, 111, 165, 0.5);
+  
+  /* Estados */
+  --success: #22c55e;
+  --danger: #ef4444;
+  
+  /* Sombras */
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
+  
+  /* Gradientes */
+  --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1a2335 50%, #0f172a 100%);
+  --gradient-card: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+}
+
+/* Tema claro */
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* Textos */
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  
+  /* Acentos */
+  --accent-primary: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-subtle: rgba(59, 130, 246, 0.1);
+  
+  /* Bordas */
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-hover: rgba(59, 130, 246, 0.5);
+  
+  /* Estados */
+  --success: #16a34a;
+  --danger: #dc2626;
+  
+  /* Sombras */
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+  
+  /* Gradientes */
+  --gradient-hero: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
+  --gradient-card: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+}
+
+/* ============================================
+   Reset e Base
+   ============================================ */
+
 *,
 *::before,
 *::after {
@@ -17,9 +99,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0f172a;
-  color: #a0aec0;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
@@ -32,6 +115,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Georgia', 'Times New Roman', serif;
   line-height: 1.3;
+  color: var(--text-primary);
 }
 
 a {
@@ -49,27 +133,27 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: var(--text-muted);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4a6fa5;
+  background: var(--accent-primary);
 }
 
 /* Selection */
 ::selection {
-  background: rgba(74, 111, 165, 0.4);
-  color: #fff;
+  background: var(--accent-primary);
+  color: var(--text-primary);
 }
 
 /* Focus */
 :focus-visible {
-  outline: 2px solid #4a6fa5;
+  outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
 }
 
@@ -106,11 +190,11 @@ button {
 }
 
 .text-primary {
-  color: #4a6fa5;
+  color: var(--accent-primary);
 }
 
 .text-white {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .mt-1 { margin-top: 0.5rem; }

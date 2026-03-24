@@ -9,6 +9,7 @@ import About from './pages/About';
 import Ministerios from './pages/Ministerios';
 import Escala from './pages/Escala';
 import Transparencia from './pages/Transparencia';
+import { useTheme } from './hooks/useTheme';
 import './styles/globals.css';
 
 const PageWrapper = ({ children }) => {
@@ -21,11 +22,16 @@ const PageWrapper = ({ children }) => {
 
 const App = () => {
   const [isPrayerModalOpen, setIsPrayerModalOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <Router>
       <div className="app">
-        <Navbar onPrayerClick={() => setIsPrayerModalOpen(true)} />
+        <Navbar 
+          onPrayerClick={() => setIsPrayerModalOpen(true)} 
+          theme={theme}
+          onThemeToggle={toggleTheme}
+        />
         
         <main style={{ flex: 1, paddingTop: '80px' }}>
           <AnimatePresence mode="wait">
