@@ -76,7 +76,7 @@ const ModalOracao = ({ isOpen, onClose }) => {
                       <input
                         type="checkbox"
                         checked={formData.anonimo}
-                        onChange={(e) => setFormData({ ...formData, anonimo: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, anonimo: e.target.checked })}
                       />
                       <span className="checkbox-custom"></span>
                       Desejo permanecer anônimo
