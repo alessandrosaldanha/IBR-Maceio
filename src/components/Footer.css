@@ -1,0 +1,108 @@
+.footer {
+  background: #0f172a;
+  color: #a0aec0;
+  padding: 4rem 2rem 2rem;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.footer-logo {
+  font-family: 'Georgia', serif;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.footer-tagline {
+  color: #4a6fa5;
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-address,
+.footer-contact {
+  line-height: 1.8;
+}
+
+.footer-hours {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-hours li {
+  padding: 0.3rem 0;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  padding: 0.3rem 0;
+}
+
+.footer-links a {
+  color: #a0aec0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-link {
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer-doctrine {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 1rem 1.5rem;
+  }
+
+  .footer-container {
+    gap: 2rem;
+  }
+}

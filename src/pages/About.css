@@ -1,0 +1,227 @@
+.about {
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+/* Hero */
+.about-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1a2335 100%);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.about-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: #fff;
+  font-family: 'Georgia', serif;
+  margin-bottom: 1rem;
+}
+
+.about-hero p {
+  font-size: 1.2rem;
+  color: #64748b;
+}
+
+.section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #fff;
+  margin-bottom: 2rem;
+  font-family: 'Georgia', serif;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #4a6fa5;
+  margin: 1rem auto 0;
+}
+
+/* Historia */
+.history-section {
+  background: #1a2335;
+  padding: 5rem 2rem;
+}
+
+.history-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.history-content p {
+  color: #a0aec0;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+/* Cinco Solas */
+.solas-section {
+  background: #0f172a;
+  padding: 5rem 2rem;
+}
+
+.solas-intro {
+  text-align: center;
+  color: #64748b;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+.solas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.sola-card {
+  background: #1a2335;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sola-card:hover {
+  border-color: rgba(74, 111, 165, 0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.sola-number {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(74, 111, 165, 0.2);
+  font-family: 'Georgia', serif;
+}
+
+.sola-latin {
+  font-size: 1.3rem;
+  color: #4a6fa5;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+}
+
+.sola-title {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.sola-description {
+  color: #a0aec0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Confession */
+.confession-section {
+  background: #1a2335;
+  padding: 5rem 2rem;
+}
+
+.confession-content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.confession-icon {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.confession-text h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Georgia', serif;
+}
+
+.confession-text p {
+  color: #a0aec0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.confession-quote {
+  background: rgba(74, 111, 165, 0.1);
+  border-left: 3px solid #4a6fa5;
+  padding: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  font-style: italic;
+  color: #4a6fa5;
+  font-size: 1.1rem;
+}
+
+/* Crencas */
+.beliefs-section {
+  background: #0f172a;
+  padding: 5rem 2rem;
+}
+
+.beliefs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.belief-item {
+  background: #1a2335;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.belief-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.belief-item h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.belief-item p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .confession-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .confession-icon {
+    font-size: 3rem;
+  }
+
+  .confession-quote {
+    border-left: none;
+    border-top: 3px solid #4a6fa5;
+  }
+}

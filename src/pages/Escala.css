@@ -1,0 +1,273 @@
+.escala {
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+/* Hero */
+.escala-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1a2335 100%);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.escala-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: #fff;
+  font-family: 'Georgia', serif;
+  margin-bottom: 1rem;
+}
+
+.escala-hero p {
+  font-size: 1.2rem;
+  color: #64748b;
+}
+
+.section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #fff;
+  margin-bottom: 3rem;
+  font-family: 'Georgia', serif;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #4a6fa5;
+  margin: 1rem auto 0;
+}
+
+/* Info Section */
+.info-section {
+  background: #1a2335;
+  padding: 3rem 2rem;
+}
+
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: rgba(74, 111, 165, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(74, 111, 165, 0.2);
+}
+
+.info-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.info-text h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.info-text p {
+  color: #a0aec0;
+  line-height: 1.7;
+}
+
+/* Filter Section */
+.filter-section {
+  background: #0f172a;
+  padding: 2rem;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.filter-group label {
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+.month-select {
+  background: #1a2335;
+  color: #fff;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.month-select:focus {
+  outline: none;
+  border-color: #4a6fa5;
+}
+
+/* Table Section */
+.table-section {
+  background: #0f172a;
+  padding: 3rem 2rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.escala-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1a2335;
+  min-width: 800px;
+}
+
+.escala-table th,
+.escala-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.escala-table th {
+  background: rgba(74, 111, 165, 0.2);
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.escala-table td {
+  color: #a0aec0;
+  font-size: 0.95rem;
+}
+
+.escala-table tr:hover td {
+  background: rgba(74, 111, 165, 0.1);
+}
+
+.date-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.date-cell .date {
+  color: #4a6fa5;
+  font-weight: 600;
+}
+
+.date-cell .culto {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+/* Diaconos Section */
+.diaconos-section {
+  background: #1a2335;
+  padding: 5rem 2rem;
+}
+
+.diaconos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.diacono-card {
+  background: #0f172a;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.diacono-card:hover {
+  border-color: rgba(74, 111, 165, 0.5);
+}
+
+.diacono-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #4a6fa5 0%, #1e3a5f 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.diacono-card h3 {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+/* Legenda Section */
+.legenda-section {
+  background: #0f172a;
+  padding: 5rem 2rem;
+}
+
+.legenda-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.legenda-item {
+  background: #1a2335;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.legenda-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.legenda-item h4 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.legenda-item p {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .info-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .filter-group {
+    flex-direction: column;
+  }
+
+  .escala-table {
+    font-size: 0.85rem;
+  }
+
+  .escala-table th,
+  .escala-table td {
+    padding: 0.7rem;
+  }
+}
