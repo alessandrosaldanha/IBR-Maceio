@@ -5,6 +5,7 @@
   right: 0;
   bottom: 0;
   background: var(--bg-overlay);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(5px);
   z-index: 2000;
 }
@@ -130,7 +131,7 @@
 }
 
 .checkbox-group input:checked + .checkbox-custom::after {
-  content: '✓';
+  content: "✓";
   color: var(--text-primary);
   font-size: 0.8rem;
 }
@@ -166,8 +167,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .modal-success h3 {

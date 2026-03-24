@@ -55,9 +55,9 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Contato</h4>
           <p className="footer-contact">
-            📧 contato@ibr.com.br
+            📧 ibreformada.al@gmail.com
             <br />
-            📱 (00) 00000-0000
+            📱 (82) 00000-0000
           </p>
           <div className="footer-social">
             <a href="#" className="social-link" aria-label="YouTube">
