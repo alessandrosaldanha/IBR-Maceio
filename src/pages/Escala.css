@@ -1,286 +1,221 @@
-.escala {
+/* ============================================
+   VARIÁVEIS E RESET DE PÁGINA
+   ============================================ */
+:root {
+  --bg-dark: #0d1117;
+  --bg-card: #161b22;
+  --bg-header: #21262d;
+  --border-main: #30363d;
+  --text-main: #f0f6fc;
+  --text-dim: #8b949e;
+  --accent-blue: #58a6ff;
+}
+
+.escala-page {
+  background: var(--bg-dark);
   min-height: 100vh;
-  padding-top: 80px;
-}
-
-/* Hero */
-.escala-hero {
-  background: var(--gradient-hero);
-  padding: 5rem 2rem;
-  text-align: center;
-  transition: background 0.3s ease;
-}
-
-.escala-hero h1 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  color: var(--text-primary);
-  font-family: 'Georgia', serif;
-  margin-bottom: 1rem;
-}
-
-.escala-hero p {
-  font-size: 1.2rem;
-  color: var(--text-muted);
-}
-
-.section-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.section-title {
-  text-align: center;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  color: var(--text-primary);
-  margin-bottom: 3rem;
-  font-family: 'Georgia', serif;
-}
-
-.section-title::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: var(--accent-primary);
-  margin: 1rem auto 0;
-}
-
-/* Info Section */
-.info-section {
-  background: var(--bg-secondary);
-  padding: 3rem 2rem;
-  transition: background-color 0.3s ease;
-}
-
-.info-card {
+  padding-top: 100px;
+  padding-bottom: 100px; /* Evita que o footer cole no conteúdo */
   display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  background: var(--accent-subtle);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid var(--accent-subtle);
+  flex-direction: column;
 }
 
-.info-icon {
-  font-size: 2rem;
-  flex-shrink: 0;
-}
-
-.info-text h3 {
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-
-.info-text p {
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
-/* Filter Section */
-.filter-section {
-  background: var(--bg-primary);
-  padding: 2rem;
-  transition: background-color 0.3s ease;
-}
-
-.filter-group {
+/* ============================================
+   FILTRO DE MÊS
+   ============================================ */
+.filtro-topo {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 1rem;
+  align-items: center;
+  gap: 15px;
+  background: var(--bg-card);
+  padding: 20px;
+  border-bottom: 1px solid var(--border-main);
 }
 
-.filter-group label {
-  color: var(--text-secondary);
+.filtro-topo label {
+  color: var(--text-dim);
   font-weight: 500;
 }
 
 .month-select {
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  background: var(--bg-dark);
+  color: white;
+  border: 1px solid var(--border-main);
+  padding: 10px 20px;
   border-radius: 8px;
-  padding: 0.7rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.2s;
 }
 
-.month-select:focus {
-  outline: none;
-  border-color: var(--accent-primary);
+.month-select:hover {
+  border-color: var(--accent-blue);
 }
 
-/* Table Section */
-.table-section {
-  background: var(--bg-primary);
-  padding: 3rem 2rem;
-  transition: background-color 0.3s ease;
+/* ============================================
+   CONTAINER E SEÇÕES (MÍDIA, CINTURIÃO, DIÁCONOS)
+   ============================================ */
+.escala-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  flex-grow: 1;
 }
 
-.table-wrapper {
-  overflow-x: auto;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-}
-
-.escala-table {
-  width: 100%;
-  border-collapse: collapse;
+.escala-secao {
+  margin-bottom: 50px;
   background: var(--bg-card);
-  min-width: 800px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-main);
 }
 
-.escala-table th,
-.escala-table td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.escala-table th {
-  background: var(--accent-subtle);
-  color: var(--text-primary);
+.secao-titulo {
+  padding: 20px 25px;
+  font-size: 1.3rem;
+  background: rgba(255, 255, 255, 0.02);
+  margin: 0;
   font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-main);
 }
 
-.escala-table td {
-  color: var(--text-secondary);
+/* ============================================
+   LINHA DA TABELA (ESTRUTURA EM GRADE)
+   ============================================ */
+.linha-escala {
+  display: grid;
+  /* Divide em: Data (100px) | Tipo Culto (1.2fr) | Membros (2.8fr) */
+  grid-template-columns: 100px 1.2fr 2.8fr;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #21262d;
+  gap: 20px;
+}
+
+.linha-escala:last-child {
+  border-bottom: none;
+}
+
+.linha-escala:hover {
+  background: #1c2128;
+}
+
+/* COLUNA DATA */
+.info-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.txt-dia {
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.txt-num {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* COLUNA TIPO CULTO */
+.badge-tipo {
+  background: #21262d;
+  color: var(--text-dim);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--border-main);
+  display: inline-block;
+}
+
+/* ============================================
+   COLUNA MEMBROS (CORREÇÃO DE ALINHAMENTO)
+   ============================================ */
+.info-membros {
+  display: grid !important;
+  /* Duas colunas iguais para alinhar Alexandre e Anderson lado a lado */
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.membro-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0; /* Impede quebra da grade */
+}
+
+.membro-avatar {
+  width: 45px !important;
+  height: 45px !important;
+  min-width: 45px !important;
+  min-height: 45px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  border: 2px solid var(--border-main);
+  background: var(--bg-dark);
+}
+
+.membro-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.nome-grupo {
+  display: flex;
+  flex-direction: column;
+}
+
+.nome-txt {
+  color: var(--text-main);
+  font-weight: 500;
   font-size: 0.95rem;
 }
 
-.escala-table tr:hover td {
-  background: var(--accent-subtle);
+.funcao-txt {
+  color: var(--accent-blue);
+  font-size: 0.75rem;
+  font-style: italic;
+  display: block;
 }
 
-.date-cell {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.date-cell .date {
-  color: var(--accent-primary);
-  font-weight: 600;
-}
-
-.date-cell .culto {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-/* Diaconos Section */
-.diaconos-section {
-  background: var(--bg-secondary);
-  padding: 5rem 2rem;
-  transition: background-color 0.3s ease;
-}
-
-.diaconos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.diacono-card {
-  background: var(--bg-card);
-  border-radius: 12px;
-  padding: 2rem;
+/* ============================================
+   ESTADOS DE CARREGAMENTO E MENSAGENS
+   ============================================ */
+.loading-state,
+.vazio-msg {
   text-align: center;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-}
-
-.diacono-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-5px);
-}
-
-.diacono-avatar {
-  width: 80px;
-  height: 80px;
-  background: var(--gradient-card);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.diacono-card h3 {
-  color: var(--text-primary);
+  padding: 60px;
+  color: var(--text-dim);
   font-size: 1.1rem;
 }
 
-/* Legenda Section */
-.legenda-section {
-  background: var(--bg-primary);
-  padding: 5rem 2rem;
-  transition: background-color 0.3s ease;
-}
-
-.legenda-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-}
-
-.legenda-item {
-  background: var(--bg-card);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-}
-
-.legenda-item:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-5px);
-}
-
-.legenda-icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.legenda-item h4 {
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-
-.legenda-item p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-@media (max-width: 768px) {
-  .info-card {
-    flex-direction: column;
-    text-align: center;
+/* ============================================
+   RESPONSIVIDADE (MOBILE)
+   ============================================ */
+@media (max-width: 850px) {
+  .linha-escala {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px;
   }
 
-  .filter-group {
-    flex-direction: column;
+  .info-membros {
+    grid-template-columns: 1fr; /* No celular vira uma coluna só */
+    border-top: 1px dashed var(--border-main);
+    padding-top: 15px;
   }
 
-  .escala-table {
-    font-size: 0.85rem;
-  }
-
-  .escala-table th,
-  .escala-table td {
-    padding: 0.7rem;
+  .info-data {
+    flex-direction: row;
+    gap: 10px;
+    align-items: baseline;
   }
 }

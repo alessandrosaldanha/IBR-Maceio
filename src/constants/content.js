@@ -364,9 +364,8 @@ export const content = {
     icon: '✝️',
     nameLabel: 'Seu nome (opcional)',
     namePlaceholder: 'Digite seu nome',
-    anonymousLabel: 'Desejo permanecer anônimo',
-    oracaoLabel: 'Seu pedido de oração *',
-    oracaoPlaceholder: 'Escreva seu pedido de oração...',
+    oracaoLabel: 'Descrição do Pedido *',
+    oracaoPlaceholder: 'Descreva sua necessidade...',
     submitButton: 'Enviar Pedido',
     success: {
       icon: '🙏',
