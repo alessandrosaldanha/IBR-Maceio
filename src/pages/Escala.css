@@ -2,7 +2,7 @@
    VARIÁVEIS E RESET DE PÁGINA
    ============================================ */
 :root {
-  --bg-dark: #0d1117;
+  --bg-dark: #14223a69;
   --bg-card: #161b22;
   --bg-header: #21262d;
   --border-main: #30363d;
@@ -15,7 +15,7 @@
   background: var(--bg-dark);
   min-height: 100vh;
   padding-top: 100px;
-  padding-bottom: 100px; /* Evita que o footer cole no conteúdo */
+  padding-bottom: 100px;
   display: flex;
   flex-direction: column;
 }
@@ -31,6 +31,7 @@
   background: var(--bg-card);
   padding: 20px;
   border-bottom: 1px solid var(--border-main);
+  border-top: 1px solid var(--border-main);
 }
 
 .filtro-topo label {
@@ -57,13 +58,14 @@
    CONTAINER E SEÇÕES (MÍDIA, CINTURIÃO, DIÁCONOS)
    ============================================ */
 .escala-container {
-  max-width: 1200px;
-  margin: 40px auto;
+  max-width: 100%;
+  margin-top: 40px;
   padding: 0 20px;
   flex-grow: 1;
 }
 
 .escala-secao {
+  width: 100%;
   margin-bottom: 50px;
   background: var(--bg-card);
   border-radius: 12px;
@@ -174,13 +176,13 @@
 }
 
 .nome-txt {
-  color: var(--text-main);
+  color: var(--accent-blue);
   font-weight: 500;
   font-size: 0.95rem;
 }
 
 .funcao-txt {
-  color: var(--accent-blue);
+  color: var(--text-dim);
   font-size: 0.75rem;
   font-style: italic;
   display: block;
